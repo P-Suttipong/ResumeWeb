@@ -8,18 +8,27 @@
       >
         <p :style="titleStyle" class="title">PLEASE</p>
         <p :style="titleStyle" class="sub-title">
-          SCROLL DOWN
+          SCROLL TO OPEN
         </p>
       </div>
     </div>
-    <div :style="desc1" style="margin-top: 50vh" class="column align-center">
+    <div
+      :style="desc1"
+      style="margin-top: 50vh"
+      class="row justify-center profile-border"
+    >
+      <div class="glowing" :style="fadeInImg">
+        <FlipCard></FlipCard>
+      </div>
+    </div>
+    <div :style="desc1" style="margin-top: 10vh" class="column align-center">
       <div
         @mouseover="isOverBox1 = true"
         @mouseout="isOverBox1 = false"
         class="description-box"
       >
-        <p>Hi, I'm Suttipong Pramuansin.</p>
-        <p class="sub-text-1">► IoT & Frontend Developer</p>
+        <p>Hi, I'm Suttipong Pramuansin</p>
+        <!-- <p class="sub-text-1">► IoT & Frontend Developer</p> -->
         <p class="sub-text-1">► s.pramuansin@gmail.com</p>
         <p class="sub-text-1">► +66 94 591 9532</p>
 
@@ -59,22 +68,79 @@
         </div>
       </div>
     </div>
-    <div
-      :style="desc1"
-      style="margin-top: 10vh"
-      class="row justify-center profile-border"
-    >
-      <div :style="fadeInImg" class="flip-box">
-        <div class="flip-box-inner">
-          <div class="flip-box-front">
-            <img class="profile-img" src="../assets/profile.png" />
-          </div>
-          <div class="flip-box-back">
-            <img class="profile-img" src="../assets/slogan.png" />
-          </div>
+    <div :style="desc2" class="column align-center" style="margin-top: 20vh">
+      <div class="description-box">
+        <p>EDUCATION</p>
+        <div>
+          <p class="sub-text-1 title-bg">► Bachelor's Degree</p>
+          <p class="sub-text-2">Prince of Songkla University Phuket Campus</p>
+          <p class="sub-text-2">Kathu Phuket Thailand</p>
+          <p class="sub-text-2">
+            2016 - 2019, Bachelor of Computer Engineering
+          </p>
+        </div>
+        <div style="margin-bottom: 30px">
+          <p class="sub-text-1 title-bg">► High School</p>
+          <p class="sub-text-2">
+            The Demonstration School of Silpakorn University
+          </p>
+          <p class="sub-text-2">Nakhonpratom Thailand</p>
+          <p class="sub-text-2">
+            2014 - 2016, Sci & Math Program
+          </p>
         </div>
       </div>
-      <!-- <img :style="fadeInImg" class="profile-img" src="../assets/profile.png" /> -->
+    </div>
+    <div :style="desc3" class="column align-center" style="margin-top: 20vh">
+      <div class="description-box">
+        <p>WORK EXPERIENCE</p>
+        <div>
+          <p class="sub-text-1 title-bg">► Internship @WESERVE LIFESTYLE</p>
+          <p class="sub-text-2">Phuket, Thailand</p>
+          <p class="sub-text-2">
+            May 2020 - July 2020
+          </p>
+        </div>
+        <div>
+          <p class="sub-text-1 title-bg">► IoT-Developer @WESERVE LIFESTYLE</p>
+          <p class="sub-text-2">Phuket, Thailand</p>
+          <p class="sub-text-2">
+            July 2020 - Oct 2020
+          </p>
+        </div>
+        <div style="margin-bottom: 30px">
+          <p class="sub-text-1 title-bg">
+            ► Full-Stack @Andaman Tracking Co., Ltd.
+          </p>
+          <p class="sub-text-2">Phuket, Thailand</p>
+          <p class="sub-text-2">
+            Nov 2020 ~
+          </p>
+        </div>
+      </div>
+    </div>
+    <div :style="desc4" class="column align-center" style="margin-top: 20vh">
+      <div class="description-box">
+        <p>SKILLS</p>
+        <div class="row justify-center">
+          <img class="sc-icon" src="../assets/vue.png" />
+          <img class="sc-icon" src="../assets/react.png" />
+          <img class="sc-icon" src="../assets/sass.png" />
+        </div>
+        <div style="margin-top: 20px" class="row justify-center">
+          <img class="sc-icon" src="../assets/nodejs.png" />
+          <img class="sc-icon" src="../assets/nest.png" />
+          <img class="sc-icon" src="../assets/python.png" />
+        </div>
+        <div style="margin-top: 20px" class="row justify-center">
+          <img class="sc-icon" src="../assets/firebase.png" />
+          <img class="sc-icon" src="../assets/mongo.png" />
+          <img class="sc-icon" src="../assets/nodered.png" />
+        </div>
+        <div style="margin-top: 20px" class="row justify-center">
+          <img class="sc-icon" src="../assets/ps.png" />
+        </div>
+      </div>
     </div>
     <div class="row justify-center">
       <img :style="rotation" class="nb-cover" src="../assets/nbcover.png" />
@@ -85,7 +151,9 @@
 
 <script>
 import { ref } from "vue";
+import FlipCard from "../components/FlipCard.vue";
 export default {
+  components: { FlipCard },
   created() {
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("mousemove", this.handleMouse);
@@ -101,10 +169,14 @@ export default {
   data() {
     return {
       isOverBox1: false,
+      isShowChart: false,
       isGlow: false,
       date: new Date(),
       titleStyle: { opacity: 1 },
       desc1: { opacity: 0 },
+      desc2: { opacity: 0 },
+      desc3: { opacity: 0 },
+      desc4: { opacity: 0 },
       rotation: {
         transform: `rotate(0deg)`,
         "transform-origin": "center left",
@@ -112,7 +184,7 @@ export default {
       parallaxMouse: {
         "margin-left": "0px",
       },
-      fadeInImg: "",
+      fadeInImg: "margin-top : 1000px",
     };
   },
   methods: {
@@ -133,10 +205,34 @@ export default {
         this.isGlow = true;
         this.desc1.opacity = 1;
       }
-      if (window.scrollY >= 650) {
+      if (window.scrollY >= 400) {
         this.fadeInImg = "animation: slideUp 2s";
       } else {
-        this.fadeInImg = "";
+        this.fadeInImg = "margin-top : 1000px";
+      }
+      if (window.scrollY >= 1000) {
+        this.desc2 = { animation: "slideLeft 2s" };
+      } else {
+        this.desc2 = {
+          "margin-left ": " 500px",
+          opacity: "0",
+        };
+      }
+      if (window.scrollY >= 1500) {
+        this.desc3 = { animation: "slideRight 2s" };
+      } else {
+        this.desc3 = {
+          "margin-right ": " 500px",
+          opacity: "0",
+        };
+      }
+      if (window.scrollY >= 2100) {
+        this.desc4 = { animation: "slideLeft 2s" };
+      } else {
+        this.desc4 = {
+          "margin-left ": " 500px",
+          opacity: "0",
+        };
       }
     },
     handleMouse(e) {
@@ -150,7 +246,6 @@ export default {
   mounted() {
     this.showP = true;
   },
-  components: {},
 };
 </script>
 
@@ -162,6 +257,10 @@ export default {
   font-weight: bold;
   color: white;
 }
+.title-bg {
+  background: #41238a;
+  color: #47e98d;
+}
 .sub-title {
   font-size: 4.7vw;
   margin-bottom: -5vh;
@@ -171,15 +270,18 @@ export default {
 .sub-text-1 {
   font-size: 2vw;
 }
+.sub-text-2 {
+  font-size: 1.3vw;
+}
 .nb-cover {
   margin-top: 5vh;
-  width: 80vw;
+  width: 60vw;
   position: fixed;
-  bottom: 70px;
+  bottom: 6vh;
 }
 .nb-base {
   margin-top: 5vh;
-  width: 80vw;
+  width: 60vw;
   position: fixed;
   bottom: 0;
 }
@@ -193,23 +295,25 @@ export default {
   border: 2px solid white;
   padding: 10px 30px;
   border-radius: 15px;
+  width: 45vw;
 }
 .description-box:hover {
-  // box-shadow: 0px 0px 30px rgba($color: #da00bd, $alpha: 0.6);
-  animation: glowing 2s infinite;
+  animation: glowing 1s infinite;
 }
-.profile-img {
-  width: 15vw;
+.chart {
+  position: relative;
+  height: 30vw;
+  width: 30vw;
 }
 @keyframes glowing {
   0% {
-    box-shadow: 0px 0px 90px rgba($color: #da00bd, $alpha: 0.4);
+    box-shadow: 0px 0px 60px rgba($color: #41238a, $alpha: 0.8);
   }
   50% {
-    box-shadow: 0px 0px 90px rgba($color: #4605f8, $alpha: 0.4);
+    box-shadow: 0px 0px 40px rgba($color: #4b1fbb, $alpha: 0.9);
   }
   100% {
-    box-shadow: 0px 0px 90px rgba($color: #da00bd, $alpha: 0.4);
+    box-shadow: 0px 0px 60px rgba($color: #41238a, $alpha: 0.8);
   }
 }
 @keyframes slideUp {
@@ -222,50 +326,31 @@ export default {
     opacity: 1;
   }
 }
+@keyframes slideLeft {
+  0% {
+    margin-left: 500px;
+    opacity: 0.1;
+  }
+  100% {
+    margin-left: 0px;
+    opacity: 1;
+  }
+}
+@keyframes slideRight {
+  0% {
+    margin-right: 500px;
+    opacity: 0.1;
+  }
+  100% {
+    margin-right: 0px;
+    opacity: 1;
+  }
+}
 .h {
-  height: 300vh;
-}
-.flip-box {
-  background-color: transparent;
-  width: 15vw;
-  height: 15vw;
-  border: 2px solid #f1f1f1;
-  padding: 20px;
-  border-radius: 15px;
-  perspective: 1000px;
+  margin-bottom: 50vh;
 }
 
-.flip-box-inner {
-  position: relative;
-  width: 15vw;
-  height: 15vw;
-  text-align: center;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-}
-
-.flip-box:hover .flip-box-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-box-front,
-.flip-box-back {
-  position: absolute;
-  width: 15vw;
-  height: 15vw;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.flip-box-front {
-  background-color: #bbb;
-}
-
-.flip-box-back {
-  transform: rotateY(180deg);
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .title {
     margin-top: 20vh;
     margin-bottom: 0px;
@@ -296,49 +381,24 @@ export default {
     border: 2px solid white;
     padding: 20px 20px;
     border-radius: 15px;
+  }
+  .description-box:focus {
     animation: glowing 4s infinite;
   }
   .sub-text-1 {
     font-size: 3.5vw;
   }
+  .sub-text-2 {
+    font-size: 2.3vw;
+  }
   .sc-icon {
     width: 10vw;
     margin: 0px 10px;
   }
-  .profile-img {
-    width: 60vw;
-  }
-  .flip-box {
-    width: 60vw;
-    height: 60vw;
-    background-color: transparent;
-    border: 2px solid #f1f1f1;
-    padding: 20px;
-    border-radius: 15px;
-    perspective: 1000px;
-  }
-
-  .flip-box-inner {
-    background-color: transparent;
-    position: absolute;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-  }
-
-  .flip-box:focus .flip-box-inner {
-    transform: rotateY(180deg);
-  }
-
-  .flip-box-front,
-  .flip-box-back {
-    position: absolute;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-
-  .flip-box-back {
-    z-index: 50;
-    transform: rotateY(180deg);
+  .chart {
+    // position: relative;
+    height: 70vw;
+    width: 70vw;
   }
 }
 </style>
