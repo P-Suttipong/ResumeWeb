@@ -127,18 +127,19 @@
           <img class="sc-icon" src="../assets/react.png" />
           <img class="sc-icon" src="../assets/sass.png" />
         </div>
-        <div style="margin-top: 20px" class="row justify-center">
+        <div style="margin-top: 40px" class="row justify-center">
           <img class="sc-icon" src="../assets/nodejs.png" />
           <img class="sc-icon" src="../assets/nest.png" />
           <img class="sc-icon" src="../assets/python.png" />
         </div>
-        <div style="margin-top: 20px" class="row justify-center">
+        <div style="margin-top: 40px" class="row justify-center">
           <img class="sc-icon" src="../assets/firebase.png" />
           <img class="sc-icon" src="../assets/mongo.png" />
           <img class="sc-icon" src="../assets/nodered.png" />
         </div>
-        <div style="margin-top: 20px" class="row justify-center">
+        <div style="margin-top: 40px; margin-bottom: 40px" class="row justify-center">
           <img class="sc-icon" src="../assets/ps.png" />
+          <img class="sc-icon" src="../assets/arduino.png" />
         </div>
       </div>
     </div>
